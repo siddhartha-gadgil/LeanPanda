@@ -86,3 +86,28 @@ theorem quickSort_mem_iff_mem (a : α) (l: List α):
             right
             simp [h'', c, le_of_not_gt c]
     termination_by l.length
+
+/-
+List.count.{u} {α : Type u} [BEq α] (a : α) : List α → ℕ
+-/
+#check List.count
+
+/-!
+## Exercise
+
+The above result only shows that an element is a member of `quickSort l` iff it is a member of `l`. We should prove counts are equal.
+-/
+
+theorem quickSort_count (a : α) (l: List α):
+  l.count = (quickSort l).count := by sorry
+
+/-
+List.count_cons.{u_1} {α : Type u_1} [BEq α] (a b : α) (l : List α) :
+  List.count a (b :: l) = List.count a l + if (b == a) = true then 1 else 0
+-/
+#check List.count_cons
+/-
+List.count_append.{u_1} {α : Type u_1} [BEq α] (a : α) (l₁ l₂ : List α) :
+  List.count a (l₁ ++ l₂) = List.count a l₁ + List.count a l₂
+-/
+#check List.count_append
